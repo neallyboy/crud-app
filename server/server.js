@@ -1,20 +1,16 @@
-import express from 'express';
+const express = require('express');
+const apiRouter = require('./routes');
+// const cors = require('cors');
 
-// Express related imports
-// other node package imports
-...
+const app = express(); //.use('*', cors());
 
-import models, { sequelize } from './models';
+app.use(express.json());
+//Apply router
+app.use('/api', apiRouter);
 
-const app = express();
+//Start server
+app.listen(process.env.PORT || '4000', () => {
 
-// additional Express stuff: middleware, routes, ...
+    console.log(`Server is running on port: ${process.env.PORT || '4000'}`);
 
-
-const eraseDatabaseOnSync = true;
-
-sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
-  app.listen(process.env.PORT, () =>
-    console.log(`Example app listening on port ${process.env.PORT}!`),
-  );
 });
