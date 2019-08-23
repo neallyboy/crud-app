@@ -1,32 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
 
 function App() {
   return (
-    <div className="App">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
-            <form action="" method="post">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" value=""/>
-                </div>    
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login"/>
-                </div>
-                <p>Don't have an account. <a href=" ">Sign up now</a>.</p>
-            </form>
-          </div>
-        </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
       </div>
-    </div>
+    </Router >
   );
 }
 

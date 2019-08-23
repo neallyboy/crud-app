@@ -17,18 +17,6 @@ pool.connect((err, client, release) => {
 
 let emrdb = {};
 
-//Login
-emrdb.login = (loginDetails) => {
-    return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM users WHERE username = ?', [loginDetails.user], (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            return resolve(results);
-        });
-    });
-};
-
 //Create user
 emrdb.createUser = (newUser) => {
   const sqlString = 'INSERT INTO users (username, password) VALUES ($1, $2)';
